@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{4F6A89D3-9FA8-1647-9C79-4DD65F77C031}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/TileManager.cs">
+    <Files>
+      <File FileName="Assets/scripts/CameraMotor.cs" Line="23" Column="51" />
+      <File FileName="Assets/scripts/TileManager.cs" Line="116" Column="18" />
+      <File FileName="Assets/scripts/Player.cs" Line="22" Column="58" />
+      <File FileName="Assets/scripts/Boxesswipe.cs" Line="25" Column="48" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Runny" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="scripts" expanded="True">
+                <Node name="TileManager.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="63092c6b-8a8a-4254-8cb8-28c444373611" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
