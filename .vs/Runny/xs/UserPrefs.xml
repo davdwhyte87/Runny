@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{4F6A89D3-9FA8-1647-9C79-4DD65F77C031}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/TileManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Boxesswipe2.cs">
     <Files>
       <File FileName="Assets/scripts/CameraMotor.cs" Line="23" Column="51" />
-      <File FileName="Assets/scripts/TileManager.cs" Line="116" Column="18" />
-      <File FileName="Assets/scripts/Player.cs" Line="22" Column="58" />
+      <File FileName="Assets/scripts/TileManager.cs" Line="40" Column="21" />
+      <File FileName="Assets/scripts/Player.cs" Line="11" Column="38" />
       <File FileName="Assets/scripts/Boxesswipe.cs" Line="25" Column="48" />
+      <File FileName="Assets/scripts/Boxesswipe2.cs" Line="5" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +13,7 @@
           <Node name="Runny" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
-                <Node name="TileManager.cs" selected="True" />
+                <Node name="Boxesswipe2.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -22,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="63092c6b-8a8a-4254-8cb8-28c444373611" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1f0092c9-ed4c-407b-b286-0e8d75953b85" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

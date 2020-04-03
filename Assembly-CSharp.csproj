@@ -64,9 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripts\Boxesswipe.cs" />
+    <Compile Include="Assets\scripts\Boxesswipe2.cs" />
     <Compile Include="Assets\scripts\CameraMotor.cs" />
     <Compile Include="Assets\scripts\Player.cs" />
     <Compile Include="Assets\scripts\TileManager.cs" />
+    <None Include="Assets\read me.txt" />
     <None Include="Assets\Low poly 3D game character_1\Documentation of Models.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/david/games/Runny/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

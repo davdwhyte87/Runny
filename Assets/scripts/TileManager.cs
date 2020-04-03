@@ -10,6 +10,8 @@ public class TileManager : MonoBehaviour
     public GameObject[] tilePrefabs;
     public GameObject[] levelHardTilePrefabs;
     public GameObject[] levelComplexTilePrefabs;
+    public GameObject[] levelBadComplexTilePrefabs;
+    public GameObject[] levelDeathTilePrefabs;
     private Transform playerTransform;
     private List<GameObject> activateTiles;
     private float spanZ = -100.0f;
@@ -19,7 +21,7 @@ public class TileManager : MonoBehaviour
 
     float timer = 0.0f;
   
-    private enum GameLevel { EASY, HARD, COMPLEX };
+    private enum GameLevel { EASY, HARD, COMPLEX, BADCOMPLEX, DEATH };
     private GameLevel gameLevel;
     // Start is called before the first frame update
     void Start()
@@ -33,16 +35,16 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateLevel()
     {
         // get the distance and update the game level
         timer += Time.deltaTime;
 
         //Debug.Log(timer);
         //Debug.Log(gameLevel);
-        Debug.Log(activateTiles);
-        if (timer > 60.0f) {
+        //Debug.Log(activateTiles);
+        if (timer > 60.0f)
+        {
             gameLevel = GameLevel.HARD;
         }
 
@@ -51,7 +53,23 @@ public class TileManager : MonoBehaviour
             gameLevel = GameLevel.COMPLEX;
         }
 
-     
+        if (timer > 240.0f)
+        {
+            gameLevel = GameLevel.BADCOMPLEX;
+        }
+
+        if (timer > 320.0f)
+        {
+            gameLevel = GameLevel.DEATH;
+        }
+
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        // update level
+        UpdateLevel();
+  
         if(playerTransform.position.z - safeZone > (spanZ - amtTilesOnScreen*tileLength))
         {
             SpawnTile();
@@ -82,9 +100,19 @@ public class TileManager : MonoBehaviour
             {
                 go = Instantiate(levelComplexTilePrefabs[RandomTile()]) as GameObject;
             }
-            
+
+            if (gameLevel == GameLevel.BADCOMPLEX)
+            {
+                go = Instantiate(levelBadComplexTilePrefabs[RandomTile()]) as GameObject;
+            }
+
+            if (gameLevel == GameLevel.DEATH)
+            {
+                go = Instantiate(levelDeathTilePrefabs[RandomTile()]) as GameObject;
+            }
+
         }
-        
+
         go.transform.SetParent(transform);
         go.transform.position = Vector3.forward * spanZ;
         spanZ += tileLength;
@@ -107,6 +135,10 @@ public class TileManager : MonoBehaviour
                 return Random.Range(0, levelHardTilePrefabs.Length);
             case GameLevel.COMPLEX:
                 return Random.Range(0, levelComplexTilePrefabs.Length);
+            case GameLevel.BADCOMPLEX:
+                return Random.Range(0, levelBadComplexTilePrefabs.Length);
+            case GameLevel.DEATH:
+                return Random.Range(0, levelDeathTilePrefabs.Length);
         }
         //if(tilePrefabs.Length <=1)
         //{
