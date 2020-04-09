@@ -37,6 +37,6 @@ public class Boxesswipe : MonoBehaviour
             maxZoom = 10;
         }
         transform.Translate((Random.Range(2, maxZoom) * Time.deltaTime * dex), 0f, 0f);
-        
+
     }
 }

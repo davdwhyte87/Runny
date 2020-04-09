@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-
 public class TileManager : MonoBehaviour
 {
     public GameObject[] tilePrefabs;
@@ -12,6 +10,7 @@ public class TileManager : MonoBehaviour
     public GameObject[] levelComplexTilePrefabs;
     public GameObject[] levelBadComplexTilePrefabs;
     public GameObject[] levelDeathTilePrefabs;
+    public GameObject[] levelHellTilePrefabs;
     private Transform playerTransform;
     private List<GameObject> activateTiles;
     private float spanZ = -100.0f;
@@ -20,8 +19,9 @@ public class TileManager : MonoBehaviour
     private int amtTilesOnScreen = 3;
 
     float timer = 0.0f;
-  
-    private enum GameLevel { EASY, HARD, COMPLEX, BADCOMPLEX, DEATH };
+
+   
+    private enum GameLevel { EASY, HARD, COMPLEX, BADCOMPLEX, DEATH, HELL };
     private GameLevel gameLevel;
     // Start is called before the first frame update
     void Start()
@@ -29,10 +29,11 @@ public class TileManager : MonoBehaviour
         gameLevel = GameLevel.EASY;
         activateTiles = new List<GameObject>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        for (int i =0; i< amtTilesOnScreen; i++)
+        for (int i = 0; i < amtTilesOnScreen; i++)
         {
             SpawnTile(0);
         }
+        
     }
 
     private void UpdateLevel()
@@ -45,22 +46,32 @@ public class TileManager : MonoBehaviour
         //Debug.Log(activateTiles);
         if (timer > 60.0f)
         {
+            //Player.GetInstance().SetSpeed(1);
             gameLevel = GameLevel.HARD;
         }
 
         if (timer > 180.0f)
         {
+            
             gameLevel = GameLevel.COMPLEX;
         }
 
         if (timer > 240.0f)
         {
+            
             gameLevel = GameLevel.BADCOMPLEX;
         }
 
         if (timer > 320.0f)
         {
+            
             gameLevel = GameLevel.DEATH;
+        }
+
+        if (timer > 460.0f)
+        {
+            
+            gameLevel = GameLevel.HELL;
         }
 
     }
@@ -69,13 +80,12 @@ public class TileManager : MonoBehaviour
     {
         // update level
         UpdateLevel();
-  
-        if(playerTransform.position.z - safeZone > (spanZ - amtTilesOnScreen*tileLength))
+
+        if (playerTransform.position.z - safeZone > (spanZ - amtTilesOnScreen * tileLength))
         {
             SpawnTile();
             DeleteTile();
         }
-        
     }
 
     private void SpawnTile(int prefabIndex = -1)
@@ -85,7 +95,8 @@ public class TileManager : MonoBehaviour
         if (prefabIndex != -1)
         {
             go = Instantiate(tilePrefabs[prefabIndex]) as GameObject;
-        } else
+        }
+        else
         {
             if (gameLevel == GameLevel.EASY)
             {
@@ -111,6 +122,10 @@ public class TileManager : MonoBehaviour
                 go = Instantiate(levelDeathTilePrefabs[RandomTile()]) as GameObject;
             }
 
+            if (gameLevel == GameLevel.HELL)
+            {
+                go = Instantiate(levelHellTilePrefabs[RandomTile()]) as GameObject;
+            }
         }
 
         go.transform.SetParent(transform);
@@ -127,11 +142,12 @@ public class TileManager : MonoBehaviour
 
     private int RandomTile()
     {
-        switch(gameLevel)
+        switch (gameLevel)
         {
             case GameLevel.EASY:
                 return Random.Range(0, tilePrefabs.Length);
             case GameLevel.HARD:
+               
                 return Random.Range(0, levelHardTilePrefabs.Length);
             case GameLevel.COMPLEX:
                 return Random.Range(0, levelComplexTilePrefabs.Length);
@@ -139,13 +155,13 @@ public class TileManager : MonoBehaviour
                 return Random.Range(0, levelBadComplexTilePrefabs.Length);
             case GameLevel.DEATH:
                 return Random.Range(0, levelDeathTilePrefabs.Length);
+            case GameLevel.HELL:
+                return Random.Range(0, levelHellTilePrefabs.Length);
         }
         //if(tilePrefabs.Length <=1)
         //{
         //    return 0;
         //}
-
         return 0;
     }
-
 }

@@ -21,7 +21,7 @@ public class CameraMotor : MonoBehaviour
     void Update()
     {
         moveVector = lookAt.position + startOffset;
-        //    //moveVector.x = 0;
+        moveVector.x = 0;
         //    //moveVector.y = Mathf.Clamp(moveVector.y, 3, 5);
         transform.position = moveVector;
         //    if (transition > 1.0f)
